@@ -4,7 +4,6 @@ from game.player import Player
 
 def main():
     pygame.init()
-    print(pygame.image.get_extended())
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption('Space Invaders')
