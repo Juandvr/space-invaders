@@ -1,14 +1,22 @@
 import pygame
 from game.settings import SCREEN_WIDTH, SCREEN_HEIGHT, FPS
+from game.player import Player
 
 def main():
     pygame.init()
+    print(pygame.image.get_extended())
 
-    gameDisplay = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption('Space Invaders')
 
-    clock = pygame.time.Clock()
+    player = Player()
+    all_sprites = pygame.sprite.Group()
+    all_sprites.add(player)
 
+    black = (0, 0, 0)
+    white = (255, 255, 255)
+
+    clock = pygame.time.Clock()
     running = True
 
     while running:
@@ -18,6 +26,11 @@ def main():
                 running = False
 
             print(event)
+
+        all_sprites.update()
+
+        screen.fill(white)
+        all_sprites.draw(screen)
 
         pygame.display.update()
         clock.tick(FPS)
