@@ -1,5 +1,3 @@
-from typing import Any
-
 import pygame
 import os
 from game.settings import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_SPEED
