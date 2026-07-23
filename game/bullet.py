@@ -1,12 +1,21 @@
 import pygame
 import os
-from game.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BULLET_SPEED
+from game.settings import BULLET_SPEED
 
 class Bullet(pygame.sprite.Sprite):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, x, y, *groups):
+        super().__init__(*groups)
 
         image_path = os.path.join('assets', 'images', 'bullet.png')
         self.image = pygame.transform.scale_by(pygame.image.load(image_path).convert_alpha(), 8)
-        self.rect = self.image.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT - 50))
+        self.rect = self.image.get_rect()
         self.speed = BULLET_SPEED
+        self.rect.centerx = x
+        self.rect.top = y
+
+    def update(self):
+        assert self.rect is not None
+        self.rect.y -= self.speed
+
+        if self.rect.bottom < 0:
+            self.kill()

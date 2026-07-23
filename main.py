@@ -8,8 +8,9 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption('Space Invaders')
 
-    player = Player()
     all_sprites = pygame.sprite.Group()
+    bullets = pygame.sprite.Group()
+    player = Player(all_sprites, bullets)
     all_sprites.add(player)
 
     black = (0, 0, 0)
