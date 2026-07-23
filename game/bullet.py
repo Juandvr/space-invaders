@@ -1,6 +1,5 @@
 import pygame
 import os
-from game.settings import BULLET_SPEED
 
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y, *groups):
@@ -9,7 +8,7 @@ class Bullet(pygame.sprite.Sprite):
         image_path = os.path.join('assets', 'images', 'bullet.png')
         self.image = pygame.transform.scale_by(pygame.image.load(image_path).convert_alpha(), 8)
         self.rect = self.image.get_rect()
-        self.speed = BULLET_SPEED
+        self.speed = 7
         self.rect.centerx = x
         self.rect.top = y
 
