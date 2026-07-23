@@ -11,6 +11,7 @@ class Bullet(pygame.sprite.Sprite):
         self.speed = 7
         self.rect.centerx = x
         self.rect.top = y
+        self.damage = 1
 
     def update(self):
         assert self.rect is not None
