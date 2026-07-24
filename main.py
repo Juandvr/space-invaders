@@ -13,9 +13,7 @@ def main():
     bullets = pygame.sprite.Group()
     aliens = pygame.sprite.Group()
     player = Player(all_sprites, bullets)
-    alien = Alien()
-    aliens.add(alien)
-    all_sprites.add(player, aliens)
+    all_sprites.add(player)
 
     black = (0, 0, 0)
     white = (255, 255, 255)
@@ -28,6 +26,13 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
+        if len(aliens) == 0:
+            for row in range(3):
+                for col in range(6):
+                    x = 100 + col * 80
+                    y = 50 + row * 60
+                    alien = Alien(x, y, aliens, all_sprites)
 
         all_sprites.update()
 

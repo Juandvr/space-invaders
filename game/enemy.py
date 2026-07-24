@@ -3,12 +3,12 @@ import os
 from game.settings import SCREEN_HEIGHT, SCREEN_WIDTH
 
 class Alien(pygame.sprite.Sprite):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, x, y, *groups):
+        super().__init__(*groups)
         image_path = os.path.join('assets', 'images', 'alien.png')
         self.og_image = pygame.transform.scale_by(pygame.image.load(image_path).convert_alpha(), 8) 
         self.image = self.og_image
-        self.rect = self.image.get_rect(center=(SCREEN_WIDTH // 2, 50))
+        self.rect = self.image.get_rect(topleft=(x, y))
         self.hp = 3
         self.speed = 5
         self.hit_image = self.image.copy()
